@@ -17,11 +17,11 @@
 }
 
 .message > small {
-  position: absolute;
-  bottom: -5px;
-  right: 0px;
-  font-size: 8px;
   color: gray;
+  position: absolute;
+  font-size: 8px;
+  bottom: -5px;
+  right: 0;
 }
 
 .message__sender {
@@ -35,9 +35,5 @@
 
 .message__sender > p {
   background-color: #3cabfa;
-  color: #fff;
-}
-
-.message__photo {
-  order: 0;
+  color: white;
 }

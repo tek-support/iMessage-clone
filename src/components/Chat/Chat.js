@@ -1,4 +1,4 @@
-import { Button, IconButton } from "@material-ui/core";
+import { IconButton } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import "./chat.css";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
@@ -12,18 +12,18 @@ import { selectUser } from "../../features/userSlice";
 import FlipMove from "react-flip-move";
 
 function Chat() {
-  const [input, setInput] = useState("");
   const user = useSelector(selectUser);
+  const [input, setInput] = useState("");
   const chatName = useSelector(selectChatName);
-  const [messages, setMessages] = useState([]);
   const chatId = useSelector(selectChatId);
+  const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     if (chatId) {
       db.collection("chats")
         .doc(chatId)
         .collection("messages")
-        .orderBy("timestamp", "asc")
+        .orderBy("timestamp", "desc")
         .onSnapshot((snapshot) =>
           setMessages(
             snapshot.docs.map((doc) => ({
@@ -46,20 +46,20 @@ function Chat() {
       email: user.email,
       displayName: user.displayName,
     });
-    setInput(" ");
+    setInput("");
   };
 
   return (
     <div className="chat">
-      {/* chatHeader */}
       <div className="chat__header">
         <h4>
           To: <span className="chat__name">{chatName}</span>
         </h4>
-        <ExitToAppIcon onClick={() => auth.signOut()} className="chat__exit" />
+        <ExitToAppIcon
+          className="chat__button"
+          onClick={() => auth.signOut()}
+        />
       </div>
-
-      {/* chat messages */}
 
       <div className="chat__messages">
         <FlipMove>
@@ -69,19 +69,19 @@ function Chat() {
         </FlipMove>
       </div>
 
-      {/* chat inputs */}
       <div className="chat__input">
         <form>
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Message"
+            placeholder="iMessage"
             type="text"
           />
-          <button onClick={sendMessage}>Send Messages</button>
+          <button onClick={sendMessage}>Send Message</button>
         </form>
+
         <IconButton>
-          <MicNoneIcon />
+          <MicNoneIcon className="chat__mic" />
         </IconButton>
       </div>
     </div>

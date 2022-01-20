@@ -24,7 +24,8 @@ function Sidebar() {
   }, []);
 
   const addChat = () => {
-    const chatName = prompt("Please enter a group name");
+    const chatName = prompt("Please enter a chat name");
+
     if (chatName) {
       db.collection("chats").add({
         chatName: chatName,
@@ -36,16 +37,12 @@ function Sidebar() {
     <div className="sidebar">
       <div className="sidebar__header">
         <Avatar src={user.photo} className="sidebar__avatar" />
-        <div className="sidebar__inputs">
+        <div className="sidebar__input">
           <SearchIcon />
           <input placeholder="Search" />
         </div>
-
         <IconButton variant="outlined" className="sidebar__inputButton">
-          <RateReviewOutlinedIcon
-            onClick={addChat}
-            className="sidebar__addChannel"
-          />
+          <RateReviewOutlinedIcon onClick={addChat} />
         </IconButton>
       </div>
 

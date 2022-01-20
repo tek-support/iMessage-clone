@@ -1,14 +1,9 @@
 .chat {
   display: flex;
   flex-direction: column;
-  flex: 0.71;
+  flex: 0.65;
   height: 100vh;
   background-color: white;
-}
-
-.chat__exit:hover {
-  color: lightgray;
-  cursor: pointer;
 }
 
 .chat__header {
@@ -16,7 +11,7 @@
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid lightgray;
-  background-color: #3e93fd;
+  background-color: #3cabfa;
 }
 
 .chat__header > h4 {
@@ -28,20 +23,32 @@
   color: black;
 }
 
-.chat__messages {
-  flex: 1;
-}
-
 .chat__input {
   display: flex;
   align-items: center;
   padding: 10px 20px;
-  border-top: 1px solid lightgrey;
-  background-color: #f5f5ff;
+  border-top: 1px solid lightgray;
+  background-color: #f5f5f5;
 }
 
 .chat__input > form {
   flex: 1;
+}
+
+.chat__messages {
+  flex: 1;
+  overflow: scroll;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.chat__messages::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar fror IE, Edge and Firefox */
+.chat__messages {
+  -ms-overflow-style: none; /* IE and Firefox */
+  scrollbar-width: none; /* Firefox */
 }
 
 .chat__input > form > input {
@@ -52,20 +59,14 @@
   padding: 5px;
 }
 
+.chat__button {
+  cursor: pointer;
+}
+
+.chat__button:hover {
+  color: white;
+}
+
 .chat__input > form > button {
   display: none;
-}
-
-.chat__messages {
-  flex: 1;
-  overflow: scroll;
-}
-
-.chat__messages::-webkit-scrollbar {
-  display: none;
-}
-
-.chat__messages {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
